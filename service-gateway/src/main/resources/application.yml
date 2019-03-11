@@ -1,0 +1,24 @@
+server:
+  port: 12810
+
+spring:
+  application:
+    name: service-gateway
+  gateway:
+    routes:
+      # 使用SockJS时，必须有配置http的route，见如下
+      # SockJS route: info必须使用http进行转发，lb代表从注册中心获取服务
+      - id: websocket_sockjs_route
+        uri: lb:service-chat
+        predicates:
+        - Path=/chat/info/**
+      # Normwal Websocket route
+      - id: websocket_route
+        uri: lb:ws://service-chat
+        predicates:
+        - Path=/chat/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:12800/register/

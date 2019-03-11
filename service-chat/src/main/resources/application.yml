@@ -1,0 +1,13 @@
+server:
+  port: 12820
+
+spring:
+  application:
+    name: service-chat
+  thymeleaf:
+    cache: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:12800/eureka/
