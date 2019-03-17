@@ -11,8 +11,8 @@
 
     <artifactId>service-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-gateway</name>
-    <description>service gateway,based on gateway</description>
+    <name>service-config</name>
+    <description>service config,based on config</description>
     <packaging>jar</packaging>
 
     <properties>

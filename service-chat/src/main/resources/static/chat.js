@@ -9,7 +9,7 @@ function setConnected(connected) {
 }
 function connect() {
     //地址+端点路径，构建websocket链接地址
-    var socket = new SockJS('/ws/chat');
+    var socket = new SockJS('http://localhost:12810/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         setConnected(true);

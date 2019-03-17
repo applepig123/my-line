@@ -24,6 +24,7 @@
         <module>service-chat</module>
         <module>service-gateway</module>
         <module>service-config</module>
+        <module>service-zuul</module>
     </modules>
 
     <properties>

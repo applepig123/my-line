@@ -18,7 +18,7 @@ public class WsConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // 注册一个Stomp的节点（endpoint）,客户端就可以通过这个端点来进行连接。
         // withSockJS()的作用是开启SockJS支持
-        registry.addEndpoint("/ws/chat").withSockJS();
+        registry.addEndpoint("/chat").withSockJS();
     }
 
     // 这个方法的作用是定义消息代理，通俗一点讲就是设置消息连接请求的各种规范信息

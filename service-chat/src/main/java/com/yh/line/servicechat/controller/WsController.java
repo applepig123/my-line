@@ -19,13 +19,6 @@ public class WsController {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
-    @RequestMapping(value = "chat", method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("chat");
-        return modelAndView;
-    }
-
     @MessageMapping("toAll")
     @SendTo("/topic/info")
     public Message sendTopic(Message request) {

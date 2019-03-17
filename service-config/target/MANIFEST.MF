@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: service-gateway
+Implementation-Title: service-config
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: yanghua
 Implementation-Vendor-Id: com.yh.line
