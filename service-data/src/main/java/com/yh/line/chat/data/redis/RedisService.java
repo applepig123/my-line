@@ -123,8 +123,7 @@ public class RedisService {
      * @param time
      */
     public void cacheSet(String key, String value, long time) {
-        SetOperations<String, String> setOps = redisTemplate.opsForSet();
-        setOps.add(key, value);
+        redisTemplate.opsForSet().add(key, value);
         if(time > 0) {
             redisTemplate.expire(key, time, TimeUnit.SECONDS);
         }
@@ -137,8 +136,7 @@ public class RedisService {
      * @param time
      */
     public void cacheSet(String key, Set<String> value, long time) {
-        SetOperations<String, String> setOps = redisTemplate.opsForSet();
-        setOps.add(key, value.toArray(new String[value.size()]));
+        redisTemplate.opsForSet().add(key, value.toArray(new String[value.size()]));
         if(time > 0) {
             redisTemplate.expire(key, time, TimeUnit.SECONDS);
         }
@@ -159,8 +157,7 @@ public class RedisService {
      * @return
      */
     public Set<String> cacheSet(String key) {
-        SetOperations<String, String> setOps = redisTemplate.opsForSet();
-        return setOps.members(key);
+        return redisTemplate.opsForSet().members(key);
     }
 
     /**
@@ -171,8 +168,7 @@ public class RedisService {
      * @return
      */
     public <T> Set<T>  getSet(String key, final Class<T> clazz) {
-        SetOperations<String, String> setOps = redisTemplate.opsForSet();
-        Set<String> members = setOps.members(key);
+        Set<String> members = redisTemplate.opsForSet().members(key);
         return members.stream().map(m -> JsonUtil.jsonToBean(m, clazz)).collect(Collectors.toSet());
     }
 
@@ -183,8 +179,7 @@ public class RedisService {
      * @return
      */
     public boolean isSetCache(String key, String member) {
-        SetOperations<String, String> setOps = redisTemplate.opsForSet();
-        return setOps.isMember(key, member);
+        return redisTemplate.opsForSet().isMember(key, member);
     }
 
     /**
@@ -194,8 +189,7 @@ public class RedisService {
      * @param time
      */
     public void cacheList(String key, List<String> value, long time) {
-        ListOperations<String, String> listOps = redisTemplate.opsForList();
-        listOps.rightPushAll(key, value);
+        redisTemplate.opsForList().rightPushAll(key, value);
         if(time > 0) {
             redisTemplate.expire(key, time, TimeUnit.SECONDS);
         }
