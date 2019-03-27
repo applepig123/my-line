@@ -4,21 +4,35 @@ server:
 spring:
   application:
     name: service-gateway
-  gateway:
-    routes:
-      # 使用SockJS时，必须有配置http的route，见如下
-      # SockJS route: info必须使用http进行转发，lb代表从注册中心获取服务
-      - id: websocket_sockjs_route
-        uri: lb:service-chat
-        predicates:
-        - Path=/chat/info/**
-      # Normwal Websocket route
-      - id: websocket_route
-        uri: lb:ws://service-chat
-        predicates:
-        - Path=/chat/**
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        # 使用SockJS时，必须有配置http的route，见如下
+        # SockJS route: info必须使用http进行转发，lb代表从注册中心获取服务
+        - id: websocket_sockjs_route
+          uri: lb://service-chat
+          predicates:
+          - Path=/chat/info/**
+        # Normwal Websocket route
+        - id: websocket_route
+          uri: lb:ws://service-chat
+          predicates:
+          - Path=/chat/**
+        - id: host_route_aa
+          uri: lb://service-chat
+          predicates:
+          - Path=/service-chat/**
+          filters:
+          - StripPrefix=1 # 去除请求地址中的service-chat
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:12800/register/
+      defaultZone: http://localhost:12800/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
