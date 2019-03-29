@@ -7,11 +7,12 @@
 		<groupId>com.yh.line</groupId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.yh.line.servicezuul</groupId>
+
 	<artifactId>service-zuul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service-zuul</name>
 	<description>service zuul，based on zuul </description>
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -35,4 +36,12 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

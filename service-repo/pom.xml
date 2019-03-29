@@ -9,18 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>service-auth</name>
-    <description>service config,based on config</description>
-    <packaging>jar</packaging>
+    <artifactId>service-repo</artifactId>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>

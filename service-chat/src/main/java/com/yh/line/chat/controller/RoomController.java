@@ -2,8 +2,8 @@ package com.yh.line.chat.controller;
 
 import com.yh.line.chat.bean.ResponseJson;
 import com.yh.line.chat.constant.ResponseStatus;
-import com.yh.line.chat.data.exception.NotFoundException;
 import com.yh.line.chat.service.RoomService;
+import com.yh.line.common.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +26,7 @@ public class RoomController {
     public ResponseJson joinRoom(@RequestParam("userId") String userId, @RequestParam("roomId") String roomId) {
         ResponseJson responseJson = new ResponseJson();
         try {
-            roomService.joinRoom(roomId, userId);
+            roomService.join(roomId, userId);
             responseJson.setMessage(ResponseStatus.Success.getMessage()).setStatus(ResponseStatus.Success.getStatus());
         } catch (NotFoundException e) {
             responseJson.setStatus(ResponseStatus.NotFound.getStatus()).setMessage(ResponseStatus.NotFound.getMessage());

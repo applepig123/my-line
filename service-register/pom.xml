@@ -7,7 +7,7 @@
 		<artifactId>my-line</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.yh.line</groupId>
+
 	<artifactId>service-register</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service-register</name>
@@ -31,4 +31,12 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
